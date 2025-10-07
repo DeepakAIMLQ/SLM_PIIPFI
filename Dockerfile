@@ -1,23 +1,14 @@
-# Base image
 FROM python:3.11-slim
 
-# Set workdir
 WORKDIR /app
 
-# Copy project
-COPY . /app
+# Install only required OS packages
+RUN apt-get update && apt-get install -y build-essential
 
-# Upgrade pip
-RUN pip install --upgrade pip
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install dependencies
-RUN pip install -r requirements.txt
+COPY . .
 
-# Create temp folder
-RUN mkdir -p temp
-
-# Expose ports
-EXPOSE 8000 8501
-
-# Start both FastAPI and Streamlit
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port 8000 & streamlit run test_client.py --server.port 8501 --server.address 0.0.0.0"]
+EXPOSE 8000
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
