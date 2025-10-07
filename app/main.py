@@ -23,7 +23,7 @@ app = FastAPI(title="Multi-domain PII/PHI/PFI Extractor")
 # ---------------- Enable CORS ----------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins. Change to specific domains for production.
+    allow_origins=["https://slmpiipfi-9gabdgkmvbujftgpiy4fpk.streamlit.app"],  # Allow all origins. Change to specific domains for production.
     allow_credentials=True,
     allow_methods=["*"],   # Allow all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],   # Allow all headers

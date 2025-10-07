@@ -2,9 +2,10 @@ import streamlit as st
 import requests
 import os
 import io
+import os
 
 #Update this with your backend public URL after deployment
-FASTAPI_URL = "http://127.0.0.1:8000/extract"
+FASTAPI_URL = "https://pii-backend-i8bg.onrender.com/extract"
 
 st.set_page_config(page_title="📤 PII Extractor POC", layout="centered")
 st.title("🔎 PII/PHI Extraction – FastAPI POC")
