@@ -1,0 +1,58 @@
+{
+  "PII": {
+    "Names": [
+      "Smith"
+    ],
+    "Emails": [],
+    "Phones": [],
+    "Passports": []
+  },
+  "PHI": {
+    "MedicalConditions": []
+  },
+  "PFI": {
+    "Organizations": [],
+    "CreditCards": [],
+    "Accounts": [],
+    "Amounts": []
+  },
+  "ranked_entities": [
+    {
+      "entity": "Health Information",
+      "label": "MISC",
+      "score": 0.8685559034347534,
+      "source": "general"
+    },
+    {
+      "entity": "ifiable Information",
+      "label": "MISC",
+      "score": 0.8619920015335083,
+      "source": "general"
+    },
+    {
+      "entity": "Personal",
+      "label": "MISC",
+      "score": 0.8389265537261963,
+      "source": "general"
+    },
+    {
+      "entity": "Financial Information",
+      "label": "MISC",
+      "score": 0.8016901016235352,
+      "source": "general"
+    },
+    {
+      "entity": "Protected",
+      "label": "ORG",
+      "score": 0.5671253204345703,
+      "source": "general"
+    },
+    {
+      "entity": "Smith",
+      "label": "PER",
+      "score": 0.41766342520713806,
+      "source": "general"
+    }
+  ],
+  "file_name": "PII_PHI_PFI_sample.docx"
+}

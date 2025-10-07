@@ -1,0 +1,34 @@
+{
+  "PII": {
+    "Names": [
+      "John Doe"
+    ],
+    "Emails": [],
+    "Phones": [],
+    "Passports": []
+  },
+  "PHI": {
+    "MedicalConditions": []
+  },
+  "PFI": {
+    "Organizations": [],
+    "CreditCards": [],
+    "Accounts": [],
+    "Amounts": []
+  },
+  "ranked_entities": [
+    {
+      "entity": "John Doe",
+      "label": "PER",
+      "score": 0.9857925772666931,
+      "source": "general"
+    },
+    {
+      "entity": "123-45-6789",
+      "label": "SSN",
+      "score": 0.96,
+      "source": "regex"
+    }
+  ],
+  "file_name": "input.txt"
+}
