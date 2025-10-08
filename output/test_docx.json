@@ -1,0 +1,48 @@
+{
+  "PII": {
+    "Names": [
+      "Gaura",
+      "hyam Sundar",
+      "v Sharma"
+    ],
+    "Emails": [],
+    "Phones": [],
+    "Passports": []
+  },
+  "PHI": {
+    "MedicalConditions": []
+  },
+  "PFI": {
+    "Organizations": [],
+    "CreditCards": [],
+    "Accounts": [],
+    "Amounts": []
+  },
+  "ranked_entities": [
+    {
+      "entity": "Blood Cancer",
+      "label": "MISC",
+      "score": 0.9677178859710693,
+      "source": "general"
+    },
+    {
+      "entity": "v Sharma",
+      "label": "PER",
+      "score": 0.9354545474052429,
+      "source": "general"
+    },
+    {
+      "entity": "hyam Sundar",
+      "label": "PER",
+      "score": 0.9163882732391357,
+      "source": "general"
+    },
+    {
+      "entity": "Gaura",
+      "label": "PER",
+      "score": 0.8245595097541809,
+      "source": "general"
+    }
+  ],
+  "file_name": "test.docx"
+}
