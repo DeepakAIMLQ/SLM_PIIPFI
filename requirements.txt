@@ -20,3 +20,4 @@ python-docx
 python-pptx
 tqdm
 requests
+PyPDF2==3.0.1
