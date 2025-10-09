@@ -3,28 +3,35 @@
 #Updted on: 9-10-2025
 #Des: Updated to run on Docker both Frondend and Backend
 
+# ---- Base Image ----
 FROM python:3.11-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PORT=8501
+# ---- Environment Settings ----
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-WORKDIR /app
-
-# Install dependencies
-COPY requirements.txt .
+# ---- Install Core Dependencies ----
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential curl \
-    && pip install --upgrade pip \
-    && pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cpu \
-    && pip install -r requirements.txt \
+    build-essential \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy source
+# ---- Set working dir ----
+WORKDIR /app
+
+# ---- Copy requirements early (for caching) ----
+COPY requirements.txt .
+
+# ---- Install Python dependencies ----
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir torch==2.1.0 --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir -r requirements.txt
+
+# ---- Copy code ----
 COPY . .
 
-# Expose Streamlit’s public port
-EXPOSE 8501
+# ---- Expose Ports ----
+EXPOSE 8000
 
-# Start both FastAPI and Streamlit
-CMD ["bash", "start.sh"]
+# ---- Start FastAPI ----
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

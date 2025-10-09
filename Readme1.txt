@@ -13,3 +13,9 @@ use url http://localhost:8501/
 or for docker in same as streamlit
 >> uvicorn app.main:app --host 0.0.0.0 --port 8000 &  
 use url http://localhost:8000/docs
+
+## Local Docker test_client
+docker build -t fullstack-app .
+docker run -p 8501:8501 fullstack-app
+
+URl http://localhost:8501.
