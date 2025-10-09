@@ -1,33 +1,30 @@
-# ---- Base image ----
+#Created by : Deepak Singh
+#Created on: 5-10-2025
+#Updted on: 9-10-2025
+#Des: Updated to run on Docker both Frondend and Backend
+
 FROM python:3.11-slim
 
-# ---- Set environment vars ----
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PORT=8501
 
-# ---- Install system dependencies ----
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# ---- Create working directory ----
 WORKDIR /app
 
-# ---- Copy requirements first (better caching) ----
+# Install dependencies
 COPY requirements.txt .
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential curl \
+    && pip install --upgrade pip \
+    && pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cpu \
+    && pip install -r requirements.txt \
+    && rm -rf /var/lib/apt/lists/*
 
-# ---- Install Python dependencies ----
-# Use PyTorch CPU wheels from official repo
-RUN pip install --upgrade pip \
-    && pip install --no-cache-dir torch==2.1.0 --index-url https://download.pytorch.org/whl/cpu \
-    && pip install --no-cache-dir -r requirements.txt
-
-# ---- Copy application code ----
+# Copy source
 COPY . .
 
-# ---- Expose FastAPI port ----
-EXPOSE 8000
+# Expose Streamlit’s public port
+EXPOSE 8501
 
-# ---- Start the FastAPI app ----
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Start both FastAPI and Streamlit
+CMD ["bash", "start.sh"]

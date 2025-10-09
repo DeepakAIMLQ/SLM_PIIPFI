@@ -5,7 +5,9 @@ import io
 import os
 
 #Update this with your backend public URL after deployment
-FASTAPI_URL = "https://slmpiipfi-production.up.railway.app/extract"
+#FASTAPI_URL = "https://slmpiipfi-production.up.railway.app/extract"
+FASTAPI_URL = "http://localhost:8000/extract"
+
 
 st.set_page_config(page_title="📤 PII Extractor POC", layout="centered")
 st.title("🔎 PII/PHI Extraction – FastAPI POC")
