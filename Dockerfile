@@ -22,4 +22,4 @@ COPY . .
 EXPOSE 8000
 
 # Run both FastAPI and Streamlit if needed
-CMD ["bash", "-c", "uvicorn backend.main:app --host 0.0.0.0 --port 8000 & streamlit run frontend/app.py --server.port 8501 --server.address 0.0.0.0"]
+CMD ["bash", "-c", "uvicorn app.main:app --host 0.0.0.0 --port 8000 & streamlit run test_client.py --server.port 8501 --server.address 0.0.0.0"]
