@@ -12,9 +12,7 @@
 #torch
 #python-multipart==0.0.6
 
-fastapi==0.103.1
-uvicorn==0.23.2
-transformers==4.33.2
+
 pandas
 python-docx
 python-pptx
@@ -22,3 +20,8 @@ tqdm
 requests
 PyPDF2==3.0.1
 python-multipart
+numpy<2.0
+torch==2.2.2
+transformers==4.44.2
+fastapi
+uvicorn
